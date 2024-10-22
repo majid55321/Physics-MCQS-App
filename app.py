@@ -1,39 +1,23 @@
 import streamlit as st
-from pyngrok import ngrok
 
-# Important Physics MCQs data
-physics_mcqs = [
+# Define important MCQs and their solutions
+mcqs = [
     {
         "question": "What is the SI unit of force?",
         "choices": ["Joule", "Newton", "Pascal", "Watt"],
         "answer": "Newton"
     },
     {
-        "question": "Who proposed the law of universal gravitation?",
-        "choices": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "James Clerk Maxwell"],
-        "answer": "Isaac Newton"
-    },
-    {
-        "question": "What is the speed of light in vacuum?",
-        "choices": ["3 × 10^8 m/s", "3 × 10^6 m/s", "3 × 10^4 m/s", "3 × 10^2 m/s"],
-        "answer": "3 × 10^8 m/s"
-    },
-    {
-        "question": "Which law explains the relation between current and potential difference?",
-        "choices": ["Faraday's Law", "Ohm's Law", "Hooke's Law", "Ampere's Law"],
-        "answer": "Ohm's Law"
-    },
-    {
-        "question": "Which particle has a negative charge?",
-        "choices": ["Proton", "Neutron", "Electron", "Positron"],
-        "answer": "Electron"
+        "question": "Which planet is known as the Red Planet?",
+        "choices": ["Earth", "Mars", "Jupiter", "Saturn"],
+        "answer": "Mars"
     }
 ]
 
-# Function to display MCQs and provide solutions
+# Function to display MCQs and check answers
 def display_mcqs():
     score = 0
-    for i, mcq in enumerate(physics_mcqs):
+    for i, mcq in enumerate(mcqs):
         st.write(f"Q{i+1}: {mcq['question']}")
         answer = st.radio("Choose your answer:", mcq["choices"], key=i)
         if st.button(f"Submit Answer {i+1}"):
@@ -45,16 +29,10 @@ def display_mcqs():
         st.write("---")
     
     if st.button("Show Final Score"):
-        st.write(f"Your Score: {score}/{len(physics_mcqs)}")
+        st.write(f"Your Score: {score}/{len(mcqs)}")
 
-# Streamlit App
-st.title("Physics MCQs App")
-st.subheader("Created by Majid Ali")
-st.write("Test your Physics knowledge with these important MCQs and solutions!")
+# Streamlit app setup
+st.title("Physics MCQs App by Majid Ali")
+st.write("Test your knowledge with important MCQs and see the solutions!")
 
 display_mcqs()
-
-# Launch ngrok to make app accessible externally
-public_url = ngrok.connect(port='8501')
-st.write(f"App is live at {public_url}")
-
