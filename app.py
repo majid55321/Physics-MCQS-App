@@ -1,7 +1,3 @@
-# Install necessary libraries
-!pip install streamlit -q
-!pip install pyngrok -q
-
 import streamlit as st
 from pyngrok import ngrok
 
